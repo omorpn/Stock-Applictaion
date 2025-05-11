@@ -1,7 +1,8 @@
 {
-  "ApiKeys": {
-    "GoogleApi": "",
-    "FinHubApi": ""
-  }
+    "Symbol": "AAPL",
+    "ApiKeys": {
+        "GoogleApi": "",
+        "FinHubApi":"d0euln9r01qsrhco1uc0d0euln9r01qsrhco1ucg"
+    }
 
 }

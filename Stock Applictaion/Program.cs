@@ -6,7 +6,8 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
 builder.Services.AddControllersWithViews();
 builder.Configuration.AddJsonFile("AppConfig/myconfig.json", optional: true, reloadOnChange: true);
 builder.Services.Configure<ApiKeys>(builder.Configuration.GetSection("ApiKeys"));
-builder.Services.AddTransient<IWeatherService, WeatherService>();
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IWeatherService, WeatherService>();  
 var app = builder.Build();
 
 app.UseStaticFiles();
