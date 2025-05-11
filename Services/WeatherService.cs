@@ -16,7 +16,7 @@ namespace Services
             _httpClientFactory = httpClientFactory;
             _apiKeys = apiKeys.Value;
         }   
-        public async Task<StockResponse?> GetStock(string stockSymbol)
+        public async Task<StockResponse> GetStock(string stockSymbol)
         {
             if (string.IsNullOrWhiteSpace(_apiKeys?.FinHubApi))
             {
@@ -43,7 +43,7 @@ namespace Services
 
             }
         }
-        public async Task<StockProfile> GetCompanyProfile(string companyName)
+        public async Task<StockResponse> GetCompanyProfile(string companyName)
         {
 
             using (HttpClient http = _httpClientFactory.CreateClient())
@@ -76,9 +76,9 @@ namespace Services
                 }
 
                 // Deserialize the response into StockProfile
-                var result = JsonSerializer.Deserialize<StockProfile>(jsonResponse);
+                var result = JsonSerializer.Deserialize<Stock>(jsonResponse);
 
-                return result;
+                return result.ToStockResponse();
             }
 
         }

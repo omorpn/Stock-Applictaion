@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServiceContract;
+using ServiceContract.DTO;
 
 namespace Stock_Applictaion.Controllers
 {
@@ -18,11 +19,20 @@ namespace Stock_Applictaion.Controllers
         public IActionResult Index()
         {
             Console.WriteLine(_configuration["Symbol"]);
-            var stock = _weatherService.GetStock(_configuration["Symbol"]).Result;
-            var stock2 = _weatherService.GetCompanyProfile(_configuration["Symbol"]).Result;
-            ViewBag.Stock = stock;
-            ViewBag.Stock2 = stock2.Country;
+            string? symbol = _configuration["Symbol"];
+            if (!string.IsNullOrEmpty(symbol))
+            {
+                var price = _weatherService.GetStock(symbol).Result;
+                var profile = _weatherService.GetCompanyProfile(symbol).Result;
+                StockResponse response = new();
+                response.Price = price.Price;
+                response.StockName = profile.StockName;
+                response.StockSymbol = profile.StockSymbol;
+
+                 return View(response);
+            }
             return View();
+            
         }
     }
 }

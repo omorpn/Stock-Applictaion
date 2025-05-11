@@ -1,16 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Entites
 {
     public class Stock
     {
         [Required(ErrorMessage ="{0} can't be empty")]
+        [JsonPropertyName("ticker")]
         public string? StockSymbol { get; set; }
         [Required(ErrorMessage = "{0} can't be empty")]
+        [JsonPropertyName("name")]
 
         public string? StockName { get; set; }
         [Required(ErrorMessage = "{0} can't be empty")]
-
+        [JsonPropertyName("c")]
         public double Price { get; set; }
         [Required(ErrorMessage = "{0} can't be empty")]
 

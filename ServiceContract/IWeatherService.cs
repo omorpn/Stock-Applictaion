@@ -6,7 +6,7 @@ namespace ServiceContract
 {
     public interface IWeatherService
     {
-        Task<StockResponse?> GetStock(string stockSymbol);
-        Task<StockProfile> GetCompanyProfile(string companyName);
+        Task<StockResponse> GetStock(string stockSymbol);
+        Task<StockResponse> GetCompanyProfile(string companyName);
     }
 }

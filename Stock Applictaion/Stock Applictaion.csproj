@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="public\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ServiceContract\ServiceContract.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
